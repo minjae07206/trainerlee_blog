@@ -11,7 +11,7 @@ export async function GET(request: Request) {
         date_of_last_modify DATE NOT NULL,
         cover_image VARCHAR(100) NOT NULL,
         category VARCHAR(50) NOT NULL,
-        content TEXT NOT NULL;`;
+        content TEXT NOT NULL );`;
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
