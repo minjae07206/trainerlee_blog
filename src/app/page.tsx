@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <div>
       <div className={style.home}>
-        <h1><b>Welcome to Trainer Lee's world</b></h1>
+        <h1><b>Welcome to Trainer Lee&apos;s world</b></h1>
         <p>Hello, my name is Minjae Lee, a aspring software developer who values communication and records.</p>
         <div className={style.snsButtons}>
         <button>Github</button>
