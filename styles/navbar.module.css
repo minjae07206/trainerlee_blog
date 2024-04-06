@@ -1,14 +1,10 @@
 .nav {
-    background-color: #2d2d2d;
-    position: fixed;
-    width: 98%;
-    margin: 0 auto;
-    top: 20px;
-    border-radius: 15px;
+    background-color: #8dc6ff;
+    width: 100%;
+    margin: 0px, 0px, 0px, 0px;
     padding: 20px 0px;
-    left: 50%;
     z-index: 10;
-    transform: translateX(-50%);
+    font-size: 20px;
   }
   
   .nav ul {

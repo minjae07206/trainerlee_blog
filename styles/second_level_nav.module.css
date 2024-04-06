@@ -1,0 +1,17 @@
+.nav {
+    left: 53%;
+    position: fixed;
+    width: 90%;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    font-size: 50px;
+}
+.nav li {
+    width: 90%;
+    height: 50px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    align-content: center;
+
+}
