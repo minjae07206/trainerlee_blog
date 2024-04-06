@@ -1,15 +1,16 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
+import styles from '../styles/navbar.module.css';
 export default function Navigation() {
     const path = usePathname()
     return (
-        <nav>
+        <nav className={styles.nav}>
             <ul>
-                <li><Link href="/">Home</Link>{path === '/' ? "I'm here": ""}</li>
-                <li><Link href="/Code">Code</Link>{path === '/Code' ? "I'm here": ""}</li>
-                <li><Link href="/BoardGames">Board Games</Link>{path === '/BoardGames' ? "I'm here": ""}</li>
-                <li><Link href="/Baseball">Baseball</Link>{path === '/Baseball' ? "I'm here": ""}</li>
+                <li className={path === '/' ? styles.selected : ''}><Link href="/">Home</Link></li>
+                <li className={path === '/Code' ? styles.selected : ''}><Link href="/Code">Code</Link></li>
+                <li className={path === '/BoardGames' ? styles.selected : ''}><Link href="/BoardGames">Board Games</Link></li>
+                <li className={path === '/Baseball' ? styles.selected : ''}><Link href="/Baseball">Baseball</Link></li>
             </ul>
         </nav>
     )
