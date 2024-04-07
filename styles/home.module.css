@@ -13,11 +13,11 @@
 }
 
 .home {
-    background-image: url('../public/desert2.jpg');
-    background-size: cover;
+    background-image: url('../public/desert1.jpg');
+    background-size: 100vw 95%;
     background-repeat: no-repeat;
     width: 100%;
-    height: 1000px;
+    height: 100vh;
 }
 
 .snsButtons {
@@ -29,27 +29,101 @@
 .snsButtons button {
     margin: 15px 15px 15px 15px;
     font-weight: bold;
-    background-color: transparent; /* Transparent background */
-    border: 5px solid black; /* 5px solid black border */
-    color: black; /* Black text */
-    padding: 15px 32px; /* Padding */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove default underline */
-    display: inline-block; /* Make it inline-block */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 8px; /* Border radius */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transition for hover */
-    position: relative; /* Position for sand filling animation */
-    overflow: hidden; /* Hide overflowing sand */
-  }
-  
-  /* Hover effect */
-  .snsButtons button:hover {
-    background-color: transparent; /* Darker background on hover */
-    transform: scale(1.05); /* Increase size on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-  }
-  
-  
+    background-color: transparent;
+    /* Transparent background */
+    border: 5px solid black;
+    /* 5px solid black border */
+    color: black;
+    /* Black text */
+    padding: 15px 32px;
+    /* Padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove default underline */
+    display: inline-block;
+    /* Make it inline-block */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 8px;
+    /* Border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover */
+    position: relative;
+    /* Position for sand filling animation */
+    overflow: hidden;
+    /* Hide overflowing sand */
+}
+
+/* Hover effect */
+.snsButtons button:hover {
+    background-color: transparent;
+    /* Darker background on hover */
+    transform: scale(1.05);
+    /* Increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow on hover */
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    /* Ensure arrow spans the entire width */
+}
+
+.arrow svg {
+    margin-top: 40px;
+}
+
+@keyframes moveUpDown {
+
+    0%,
+    50%,
+    90%,
+    100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-20px);
+    }
+
+    70% {
+        transform: translateY(-10px);
+    }
+}
+
+.arrow path {
+    animation: moveUpDown 2.1s ease-in-out infinite;
+}
+
+@media screen and (max-width: 1100px) {
+    .arrow {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: -50px;
+        /* Hide arrow */
+    }
+}
+
+@media screen and (max-width: 664px) {
+    .arrow {
+        display: none;
+        /* Hide arrow */
+    }
+}
+
+@media screen and (max-height: 464px) {
+    .arrow {
+        display: none;
+        /* Hide arrow */
+    }
+}
