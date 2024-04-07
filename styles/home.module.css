@@ -26,7 +26,7 @@
     justify-content: center;
 }
 
-.snsButtons button {
+.snsButtons a {
     margin: 15px 15px 15px 15px;
     font-weight: bold;
     background-color: transparent;
@@ -60,7 +60,7 @@
 }
 
 /* Hover effect */
-.snsButtons button:hover {
+.snsButtons a:hover {
     background-color: transparent;
     /* Darker background on hover */
     transform: scale(1.05);
