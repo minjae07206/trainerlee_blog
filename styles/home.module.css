@@ -75,6 +75,7 @@
     position: absolute;
     bottom: -25px;
     width: 100%;
+    cursor: pointer;
     /* Ensure arrow spans the entire width */
 }
 

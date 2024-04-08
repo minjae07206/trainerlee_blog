@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from '../../styles/home.module.css';
 import { fetchAllBlogPost } from "./lib/data";
 import Resume from '../../components/resume';
+import Arrow from '../../components/arrow'
 export default async function Home() {
   const allBlogPosts = await fetchAllBlogPost();
   console.log(allBlogPosts)
@@ -15,11 +16,7 @@ export default async function Home() {
           <a>Resume</a>
           <a href="https://www.linkedin.com/in/minjae-lee-23204817a/" target="_blank">LinkedIn</a>
         </div>
-        <div className={style.arrow}>
-          <svg width="50" height="200" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="#000000"></path>
-          </svg>
-        </div>
+        <Arrow></Arrow>
       </div>
       <Resume></Resume>
     </div>
