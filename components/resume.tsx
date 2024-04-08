@@ -23,7 +23,7 @@ export default function Resume () {
             <h2>Project</h2>
             <div className={style.bar}></div>
             <article>
-              <h3>Trainer Lee's blog (Current page)</h3>
+              <h3>Trainer Lee&apos;s blog (Current page)</h3>
               <h4>NYU Academic Resource Center</h4>
               <span>04/2024 - Present</span>
               <ul>
