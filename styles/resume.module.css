@@ -1,0 +1,42 @@
+.resume {
+    margin-left: 40%;
+}
+
+.resume h2 {
+    font-size: 50px;
+}
+
+.resume h3 {
+    font-size: 30px;
+    padding: 5px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.resume span {
+    color: rgb(72, 71, 71);
+}
+.resume h4 {
+    font-size: 20px;
+}
+
+.resume li {
+    margin-left: 30px;
+}
+
+.bullet {
+    display: inline-block;
+    width: 20px; /* Adjust the size of the bullet */
+    height: 20px; /* Adjust the size of the bullet */
+    margin-right: 10px; /* Add space between the bullet and the text */
+  }
+
+.bar {
+    width: 70%;
+    height: 7px;
+    background-color: #8dc6ff;
+    margin-top: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}

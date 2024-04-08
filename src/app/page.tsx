@@ -1,6 +1,7 @@
 import Image from "next/image";
 import style from '../../styles/home.module.css';
 import { fetchAllBlogPost } from "./lib/data";
+import Resume from '../../components/resume';
 export default async function Home() {
   const allBlogPosts = await fetchAllBlogPost();
   console.log(allBlogPosts)
@@ -20,7 +21,7 @@ export default async function Home() {
           </svg>
         </div>
       </div>
-
+      <Resume></Resume>
     </div>
 
 
