@@ -1,3 +1,6 @@
+import Post from '../../../components/post';
 export default function Tech(){
-    return <div></div>
+    return <div>
+        <Post></Post>
+    </div>
 }

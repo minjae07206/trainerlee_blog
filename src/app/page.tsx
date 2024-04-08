@@ -1,11 +1,8 @@
 import Image from "next/image";
 import style from '../../styles/home.module.css';
-import { fetchAllBlogPost } from "./lib/data";
 import Resume from '../../components/resume';
 import Arrow from '../../components/arrow'
 export default async function Home() {
-  const allBlogPosts = await fetchAllBlogPost();
-  console.log(allBlogPosts)
   return (
     <div>
       <div className={style.home}>
