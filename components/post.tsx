@@ -11,8 +11,8 @@ export default async function Post() {
                     <h2><Link href="/Code/[variable]" as={`/Code/${post.post_uuid}`}>{post.title}</Link></h2>
                     <span>{post.description}</span>
                     <div>Last modify: {post.formatted_date}</div>
-                    <div className={style.tags}>{post.tags.map((tag: string) => (
-                        <div className={style.tag}>#{tag}</div>
+                    <div className={style.tags}>{post.tags.map((tag: string, index: number) => (
+                        <div key={index} className={style.tag}>#{tag}</div>
                     ))
                         }</div>
                 </div>
