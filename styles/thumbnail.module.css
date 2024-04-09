@@ -1,0 +1,29 @@
+.thumbnail {
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.thumbnail h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.thumbnails {
+    margin-top: 100px;
+}
+
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.tag {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+}
