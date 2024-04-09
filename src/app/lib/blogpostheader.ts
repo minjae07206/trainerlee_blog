@@ -1,8 +1,10 @@
 import { sql } from '@vercel/postgres';
-export async function fetchAllBlogPost(){
+import { unstable_noStore as noStore } from 'next/cache';
+export async function fetchPostThumbnale(){
+    noStore();
     try {
         const data = await sql`
-            SELECT * FROM blog;`;
+        SELECT title, description, TO_CHAR(date_of_last_modify, 'DD-MM-YYYY') AS formatted_date, cover_image, category, tags FROM blog`;
         return data.rows;
     } catch (error) {
         console.error('Database error:', error );

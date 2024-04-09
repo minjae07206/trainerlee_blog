@@ -1,4 +1,4 @@
-import { fetchAllBlogPost } from "@/app/lib/data";
+import { fetchPostThumbnale } from "@/app/lib/blogpostheader";
 import { QueryResultRow } from "@vercel/postgres";
 
 /*interface SinglePost {
@@ -12,20 +12,18 @@ import { QueryResultRow } from "@vercel/postgres";
 } */
 
 export default async function Post() {
-    //const allBlogPosts: QueryResultRow[] = await fetchAllBlogPost();
-    //console.log(allBlogPosts)
-    /*
+    const allBlogPosts: QueryResultRow[] = await fetchPostThumbnale();
+    console.log(allBlogPosts)
     return (
         <div>
             {allBlogPosts.map((post) => (
                 <div key={post.post_uuid}>
                     <h2>{post.title}</h2>
-                    <span>ll</span>
+                    <span>{post.description}</span>
+                    <span>{post.formatted_date}</span>
+
                 </div>
             ))}
         </div>
-    ); */
-    return (
-        <div>nothing</div>
-    )
+    ); 
 }
