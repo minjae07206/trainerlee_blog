@@ -1,9 +1,16 @@
-export default function FullPost({
+import { fetchPostFull } from "@/app/lib/blogpostfull";
+
+export default async function FullPost({
     params:  {id},
 }: {
     params: {id:string};
 }) {
+    const currentPostFull: any= await fetchPostFull(id);
+    console.log(currentPostFull);
     return (
-        <div>{id}</div>
+        <div>
+            <div>{id}</div>
+            <div>{currentPostFull[0].title}</div>
+        </div>
     )
 }

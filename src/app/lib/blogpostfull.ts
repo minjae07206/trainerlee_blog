@@ -1,10 +1,10 @@
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore } from 'next/cache';
-export async function fetchPostThumbnale(){
+export async function fetchPostFull(current_post_uuid:string){
     noStore();
     try {
         const data = await sql`
-        SELECT post_uuid, title, description, TO_CHAR(date_of_last_modify, 'DD-MM-YYYY') AS formatted_date, cover_image, category, tags FROM blog`;
+        SELECT * FROM blog WHERE post_uuid = ${current_post_uuid}`;
         return data.rows;
     } catch (error) {
         console.error('Database error:', error );
