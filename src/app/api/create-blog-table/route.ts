@@ -6,8 +6,8 @@ export async function GET(request: Request) {
     const result =
       await sql`CREATE TABLE IF NOT EXISTS blog ( 
         post_uuid UUID NOT NULL PRIMARY KEY,
-        title VARCHAR(50) NOT NULL,
-        description VARCHAR(100) NOT NULL,
+        title VARCHAR(150) NOT NULL,
+        description VARCHAR(300) NOT NULL,
         date_of_last_modify DATE NOT NULL,
         cover_image VARCHAR(100),
         category VARCHAR(50) NOT NULL,
