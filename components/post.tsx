@@ -17,7 +17,10 @@ export default async function Post() {
     return (
         <div>
             {allBlogPosts.map((post) => (
-                <div key={post.post_uuid}>{post.title}</div>
+                <div key={post.post_uuid}>
+                    <h2>{post.title}</h2>
+                    <span>ll</span>
+                </div>
             ))}
         </div>
     );
