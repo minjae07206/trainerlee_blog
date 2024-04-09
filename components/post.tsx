@@ -12,7 +12,7 @@ import { QueryResultRow } from "@vercel/postgres";
 } */
 
 export default async function Post() {
-    const allBlogPosts: QueryResultRow[] = await fetchAllBlogPost();
+    //const allBlogPosts: QueryResultRow[] = await fetchAllBlogPost();
     //console.log(allBlogPosts)
     /*
     return (
