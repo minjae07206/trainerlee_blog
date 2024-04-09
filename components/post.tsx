@@ -13,7 +13,8 @@ import { QueryResultRow } from "@vercel/postgres";
 
 export default async function Post() {
     const allBlogPosts: QueryResultRow[] = await fetchAllBlogPost();
-    console.log(allBlogPosts)
+    //console.log(allBlogPosts)
+    /*
     return (
         <div>
             {allBlogPosts.map((post) => (
@@ -23,5 +24,8 @@ export default async function Post() {
                 </div>
             ))}
         </div>
-    );
+    ); */
+    return (
+        <div>nothing</div>
+    )
 }
