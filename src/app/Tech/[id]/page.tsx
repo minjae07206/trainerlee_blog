@@ -3,12 +3,9 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import fs from 'fs'
 import { QueryResultRow } from 'pg';
-
-
-
-{/* Originally was just using params inside FullPost function, but read that getStaticProps is better for 
-data fetching, error handling, and optimization */}
-
+import React from "react";
+import style from '../../../../styles/postfull.module.css';
+import Image from "next/image";
 
 export default async function FullPost({
     params: { id },
@@ -18,8 +15,7 @@ export default async function FullPost({
     const currentPostFull: QueryResultRow[]= await fetchPostFull(id);
     const markdownContent = fs.readFileSync(currentPostFull[0].link, 'utf-8');
     return (
-        <div>
-            <div>{currentPostFull[0].title}</div>
+        <div className={style.post_content}>
             {/* We can use ReactMarkdown to read markdown files */}
             {/* we can pass an array inside remarkPlugins, and inside the array we
             can put plugins to modify the AST(abstract syntax tree) generated

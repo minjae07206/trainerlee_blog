@@ -30,7 +30,7 @@ For the **ml-client** and **web-app**, we created a `Dockerfile` to create an im
 
 The example `Dockerfile` is for the web-app. Please read the comments to see what each command is doing.
 
-![Screenshot](public/postimgfile/Screenshot%202024-04-12%20182759.png)
+![Screenshot](/postimgfile/Screenshot%202024-04-12%20182759.png)
 
 ```dockerfile
 RUN mkdir -p static/uploads && chmod 777 static/uploads
@@ -50,7 +50,7 @@ Try to find a base image that has a small size, if you search online or docker h
 
 Docker-compose allows us to build many containers at the same time. The `docker-compose.yml`(or .yaml) file should be placed in the root directory of the entire project.
 
-![Screenshot](public\postimgfile\Screenshot 2024-04-12 175233.png)
+![Screenshot](/postimgfile/Scr2024-04-12-184234.png)
 
 1. Environment:
     Things that go after the `environment:` environment variables which are considered as settings to the particular docker container. For this project, most of them are related to the database. Variables inside `${}` are imported from a `.env` file. This is to protect private information such as database username or password.
@@ -72,7 +72,7 @@ For the db the volume syntax is quite similar:
 
 I have set the imgdata myself as a local directory, but I saw from Programming with Mosh’s video: <https://www.youtube.com/watch?v=HG6yIjZapSA&t=1580s> that mongodb’s directory inside a container is set to default as  `/data/db`, so I just followed it. Then he also mentions that at the bottom we need to include the name of the local directory in a syntax like in the image below, but does not explain why.
 
-![Screenshot](public\postimgfile\Screenshot 2024-04-12 184234.png)
+![Screenshot](/postimgfile/Scr2024-04-12-184234.png)
 
 ## Random facts
 
