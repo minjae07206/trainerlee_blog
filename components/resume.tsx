@@ -24,7 +24,7 @@ export default function Resume () {
             <div className={style.bar}></div>
             <article>
               <h3>Trainer Lee&apos;s blog (Current page)</h3>
-              <h4>NYU Academic Resource Center</h4>
+              <h4>Personal web page</h4>
               <span>04/2024 - Present</span>
               <ul>
                 <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Currently in the process</li>
