@@ -32,7 +32,7 @@ The example `Dockerfile` is for the web-app. Please read the comments to see wha
 
 ![Screenshot](public/postimgfile/Screenshot%202024-04-12%20182759.png)
 
-```
+```dockerfile
 RUN mkdir -p static/uploads && chmod 777 static/uploads
 ```
 
@@ -40,7 +40,7 @@ A problem I encountered was that when I clicked upload from the web-app the data
 
 Note on Image size: when writing a dockerfile, people usually do not write an image from scratch, but write the image from a base image. In the web-app, we used:
 
-```
+```dockerfile
 FROM python:3.10-slim-buster
 ```
 
@@ -65,7 +65,7 @@ Docker-compose allows us to build many containers at the same time. The `docker-
 
 For the db the volume syntax is quite similar:
 
-```
+```yml
     volumes:
       - imgdata:/data/db
 ```

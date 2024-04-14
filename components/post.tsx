@@ -8,7 +8,8 @@ export default async function Post() {
         <div className={style.thumbnails}>
             {allBlogPosts.map((post) => (
                 <div className={style.thumbnail} key={post.post_uuid}>
-                    <h2><Link href="/Code/[variable]" as={`/Code/${post.post_uuid}`}>{post.title}</Link></h2>
+                    {/*Passing down post_uuid to link the page content page*/}
+                    <h2><Link href="/Code/[variable]" as={`/Tech/${post.post_uuid}`}>{post.title}</Link></h2>
                     <span>{post.description}</span>
                     <div>Last modify: {post.formatted_date}</div>
                     <div className={style.tags}>{post.tags.map((tag: string, index: number) => (
