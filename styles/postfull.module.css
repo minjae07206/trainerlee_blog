@@ -64,3 +64,25 @@
     width: 70%;
     height: 20%;
   }
+
+  .header_values h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .header_values section {
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .header_values section span{
+    margin-left: 1em;
+    margin-right: 1em;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px;
+  }
