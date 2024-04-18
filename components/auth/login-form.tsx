@@ -1,16 +1,17 @@
 'use client'
 import { CardWrapper } from "./card-wrapper";
-
+import style from '../../styles/logincard.module.css';
 
 const LoginForm = () => {
     return (
-        <CardWrapper
+        <div className={style.cardwrapper} >
+        <CardWrapper 
         headerLabel="Welcome back!"
         backButtonLabel="Don't have an account?"
         backButtonHref="/auth/register"
         showSocial
-        >
-            LoginForm</CardWrapper>
+        >Title</CardWrapper>
+        </div>
     )
 }
 
