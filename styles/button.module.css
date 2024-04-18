@@ -1,10 +1,9 @@
 .btn {
     display: flex;
     align-items: center;
-    font-weight: bold;
     background-color: transparent;
     /* Transparent background */
-    border: 5px solid black;
+    border: 1px solid grey;
     /* 5px solid black border */
     color: black;
     /* Black text */
@@ -16,7 +15,7 @@
     /* Remove default underline */
     display: inline-block;
     /* Make it inline-block */
-    font-size: 16px;
+    font-size: 20px;
     /* Font size */
     cursor: pointer;
     /* Cursor on hover */

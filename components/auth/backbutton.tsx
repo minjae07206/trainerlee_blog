@@ -10,7 +10,7 @@ export const BackButton = ({
     label,
 }: BackButtonProps) => {
     return (
-        <button className={style.btn}>
+        <button className={style.btn} style={{fontSize: '16px', padding: '5px'}}>
             <Link href={href}>
                 {label}
             </Link>

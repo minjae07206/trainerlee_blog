@@ -26,15 +26,15 @@ export const CardWrapper = ({
             <CardHeader className={style.cardHeader}>
                 <Header label={headerLabel}/>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{margin: '10px'}}>
                 {children}
             </CardContent>
             {showSocial && (
-                <CardFooter>
+                <CardFooter style={{margin: '20px'}}>
                     <Social/>
                 </CardFooter>
             )}
-            <CardFooter>
+            <CardFooter style={{marginTop: '40px'}}>
                 <BackButton label={backButtonLabel} href={backButtonHref}/>
             </CardFooter>
         </Card>
