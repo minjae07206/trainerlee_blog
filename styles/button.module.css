@@ -1,0 +1,43 @@
+.btn {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: transparent;
+    /* Transparent background */
+    border: 5px solid black;
+    /* 5px solid black border */
+    color: black;
+    /* Black text */
+    padding: 5px 0px;
+    /* Padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove default underline */
+    display: inline-block;
+    /* Make it inline-block */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 8px;
+    /* Border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover */
+    position: relative;
+    /* Position for sand filling animation */
+    overflow: hidden;
+    /* Hide overflowing sand */;
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: transparent;
+    /* Darker background on hover */
+    transform: scale(1.05);
+    /* Increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow on hover */
+}

@@ -23,7 +23,7 @@ export const CardWrapper = ({
 }: CardWrapperProps) => {
     return (
         <Card className={style.logincard}>
-            <CardHeader>
+            <CardHeader className={style.cardHeader}>
                 <Header label={headerLabel}/>
             </CardHeader>
             <CardContent>

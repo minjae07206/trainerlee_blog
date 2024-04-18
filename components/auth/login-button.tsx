@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { boolean } from "zod";
-
+import style from '../../styles/button.module.css';
     {/* ? Means optional prop */}
 interface LoginButtonProps {
     children: React.ReactNode,
@@ -26,8 +26,8 @@ export const LoginButton = ({
         )
     }
     return (
-        <span onClick={onClick}>
+        <button className={style.btn} style={{width: "100px", height: "40px", verticalAlign: 'top'}} onClick={onClick}>
             {children}
-        </span>
+        </button>
     )
 }

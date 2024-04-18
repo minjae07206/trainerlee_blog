@@ -1,16 +1,27 @@
 .logincard {
     height: 300px;
     width: 30%;
+    text-align: center;
+    padding: 10px;
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 10em;
     border-radius: 20px;
     border: 3px solid black;
 }
 
+.cardHeader {
+    margin-bottom: 40px;
+}
+
 .cardwrapper {
     display: flex;
     justify-content: center;
+}
+
+.loginCardTitle {
+    font-size: 46px;
+}
+
+.headerLabel {
+    color: grey
 }

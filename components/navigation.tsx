@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import styles from '../styles/navbar.module.css';
 import React from "react";
 import { LoginButton } from './auth/login-button';
+
 export default function Navigation() {
     const path = usePathname()
     return (
@@ -13,9 +14,7 @@ export default function Navigation() {
                 <li className={path === '/Tech' ? styles.selected : ''}><Link href="/Tech">💻 Tech</Link></li>
                 <li className={path === '/BoardGames' ? styles.selected : ''}><Link href="/BoardGames">🎲 Board Games</Link></li>
                 <li className={path === '/Baseball' ? styles.selected : ''}><Link href="/Baseball">⚾ Baseball</Link></li>
-                <li><LoginButton><button>
-      Button
-    </button></LoginButton></li>
+                <li><LoginButton>Login</LoginButton></li>
             </ul>
         </nav>
     )
