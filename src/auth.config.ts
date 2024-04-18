@@ -1,7 +1,8 @@
 import CredentialsProvider, { CredentialInput, CredentialsProviderType } from 'next-auth/providers/credentials';
 import type { NextAuthConfig } from "next-auth"
-
-
+import { ZodError } from "zod"
+import { signInSchema } from "./app/lib/zod";
+import { getUserFromDb } from './app/lib/getuser';
 export default { 
     providers: [
         CredentialsProvider({
@@ -22,17 +23,8 @@ export default {
                     placeholder: "Enter password",
                 },
             },
-            async authorize(credentials) {
-                // Here, we want to retrieve user data to retrieve credentials.
-                // This is why we use async function.
-                // const user = await fetchUserCredentials(credentials)
-                const user = { id: '42', username: "Dave", password: 'nextauth'}
-                if (credentials?.username === user.username && credentials?.password === user.password) {
-                    return user
-                } else {
-                    return null
-                }
-            }
+            
+
         })
-    ]
+    ],
  } satisfies NextAuthConfig
