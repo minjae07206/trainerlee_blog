@@ -9,7 +9,7 @@ export const Header = ({
     HeaderProps) => {
     return (
         <div>
-            <h1 className={style.loginCardTitle} >Auth</h1>
+            <h1 className={style.loginCardTitle} >Trainer Lee's World</h1>
             <p className={style.headerLabel}>{label}</p>
         </div>
     )
