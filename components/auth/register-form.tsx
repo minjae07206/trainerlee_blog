@@ -10,7 +10,7 @@ import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
 // useTransition is a React Hook that lets you update the state without blocking the UI.
 import { useTransition } from 'react';
-const LoginForm = () => {
+const RegisterForm = () => {
     // We can add the isPending variable to html tags(input) to stop it while isPending
     const [isPending, startTransition] = useTransition();
     const [emailError, setEmailError]: [string, Function] = useState("");
@@ -69,4 +69,4 @@ const LoginForm = () => {
     )
 }
 
-export {LoginForm};
+export {RegisterForm};
