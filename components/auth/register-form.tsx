@@ -45,9 +45,9 @@ const RegisterForm = () => {
     return (
         <div className={style.cardwrapper} >
             <CardWrapper
-                headerLabel="Welcome back!"
+                headerLabel="Welcome to Trainer Lee&apos;s world!"
                 backButtonLabel="Already have an account?"
-                backButtonHref="/auth/register"
+                backButtonHref="/auth/login"
                 showSocial
             >
                 <form onSubmit={submitLoginForm} className={style.loginForm}>
