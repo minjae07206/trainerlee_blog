@@ -22,10 +22,10 @@ const RegisterForm = () => {
             password: ""
         }
     })
-    const submitLoginForm:any =  (event: any) => {
+    const submitLoginForm: any = (event: any) => {
         event.preventDefault()
-        const email:string = event.target[0].value
-        const password:string = event.target[1].value
+        const email: string = event.target[0].value
+        const password: string = event.target[1].value
         if (email.length === 0) {
             setEmailError("Invalid email")
         } else {
@@ -36,37 +36,42 @@ const RegisterForm = () => {
         } else {
             setPasswordError("")
         }
-        startTransition(()=>{
+        startTransition(() => {
             login(email, password)
         })
-        
-        
+
+
     }
     return (
         <div className={style.cardwrapper} >
-        <CardWrapper 
-        headerLabel="Welcome back!"
-        backButtonLabel="Don't have an account?"
-        backButtonHref="/auth/register"
-        showSocial
-        >
-            <form onSubmit={submitLoginForm} className={style.loginForm}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    {/* input disabled while isPending, that is while login logic is doing work */}
-                    <input disabled={isPending} type="email" name="email" placeholder="example@gmail.com"></input>
-                    <span>{emailError}</span>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input disabled={isPending} type="password" name="password"></input>
-                    <span>{passwordError}</span>
-                </div>
-                <button disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
-            </form>
-        </CardWrapper>
+            <CardWrapper
+                headerLabel="Welcome back!"
+                backButtonLabel="Already have an account?"
+                backButtonHref="/auth/register"
+                showSocial
+            >
+                <form onSubmit={submitLoginForm} className={style.loginForm}>
+                    <div>
+                        <label htmlFor="password">Name</label>
+                        <input disabled={isPending} type="text" name="name"></input>
+                        <span>{passwordError}</span>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        {/* input disabled while isPending, that is while login logic is doing work */}
+                        <input disabled={isPending} type="email" name="email" placeholder="example@gmail.com"></input>
+                        <span>{emailError}</span>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input disabled={isPending} type="password" name="password"></input>
+                        <span>{passwordError}</span>
+                    </div>
+                    <button disabled={isPending} className={buttonStyle.btn} style={{ backgroundColor: "black", color: "white", width: '44%' }}>Signup</button>
+                </form>
+            </CardWrapper>
         </div>
     )
 }
 
-export {RegisterForm};
+export { RegisterForm };
