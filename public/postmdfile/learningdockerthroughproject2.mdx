@@ -1,0 +1,19 @@
+## Project aim
+
+This project was mainly about learning Docker, so we decided to create a web application where a user can upload photos of faces and the ml-client would return the dominant emotion.
+We used the deepface module as it is well known, and the API was easy to use. 
+The flow of what happens to the photo when a user uploads is as follows:
+1. The photo gets saved to the database with other relative information, one important field is the "processed" field, which is initially set to False.
+2. Every 30 seconds(time can be changed), the ml-client sends a request to check whether there are unprocessed images, and proccess them by adding the emotion attribute and sets "processed" as True
+3. The user will be able to see the result of the emotion for the image. 
+
+I am not sure why, but my teammates decided that we will not implement a backend for the ml-client, which is why we took a slightly weird approach of running the processing function every 30 seconds instead. 
+
+
+## Problem with deepface
+
+Deepface module was all good when testing the application locally, but problems arose when I started dockerising things. 
+When running the application from a ml-client docker container, there was a problem when the first photo gets uploaded and gets processed, deepface started to download very large files that were needed to analyze emotion, age, race, etc. 
+This only happend for the first upload for the container, but still this meant that the user had to wait much more than 30 seconds(which is already a long time).
+The solution that I found was pre-downloading these large files during the docker container creation phase by adding command to do so in the ml-client's Dockerfile.
+On presentation day, another group asked me how I solved this problem and I gave them the answer above, so I saw this as a potential issue that could reoccur. 
