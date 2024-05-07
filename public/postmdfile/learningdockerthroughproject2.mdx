@@ -26,3 +26,18 @@ We need to get environment variables from .env files into the python file, in or
 ```
 os.environ.get("DB_USER")
 ```
+
+## Solved problem
+
+Although building docker images worked perfectly on my computer, I got a message saying that building docker image is failing on another machine with the following error message:
+
+Insert photo Here
+
+Because there was no problem on my side, it was really hard to know what was causing the problem and I also could not fix it.
+Then, thanks to a classmate who had a similar problem, I found out that it was something to do with pkg-config, and adding the following lines in the Dockerfile solved the problem:
+
+```
+pkg-config \
+libhdf5-dev \
+gcc
+```
