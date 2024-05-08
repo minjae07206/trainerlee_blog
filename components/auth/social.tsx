@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc"
 export const Social = () => {
     return (
         <div>
-            <button className={style.btn} style={{width: "46%"}}>
+            <button onClick={()=>{}} className={style.btn} style={{width: "46%"}}>
                 <FcGoogle/>
             </button>
         </div>

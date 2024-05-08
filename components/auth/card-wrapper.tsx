@@ -2,7 +2,7 @@
 import { Children } from 'react';
 import style from '../../styles/logincard.module.css'
 import { Header } from './header';
-import { Card, CardFooter, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardContent } from "../ui/card";
 import { Social } from './social';
 import { BackButton } from './backbutton';
 interface CardWrapperProps {

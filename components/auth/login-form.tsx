@@ -8,6 +8,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormDescription,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input"
 // useTransition is a React Hook that lets you update the state without blocking the UI.
 import { useTransition } from 'react';
 const LoginForm = () => {
@@ -50,7 +60,7 @@ const LoginForm = () => {
         backButtonHref="/auth/register"
         showSocial
         >
-            <form onSubmit={submitLoginForm} className={style.loginForm}>
+            <form {...form} onSubmit={form.handleSubmit(()=>{})} className={style.loginForm}>
                 <div>
                     <label htmlFor="email">Email</label>
                     {/* input disabled while isPending, that is while login logic is doing work */}

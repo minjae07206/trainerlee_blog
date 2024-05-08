@@ -1,6 +1,6 @@
 'use server'
 import bycrypt from "bcrypt";
-import { db } from "@/lib/db"
+import { db } from "@/app/lib/db"
 import { error } from "console";
 import { getUserByEmail } from "../data/user";
 export const register = async (name: string, email: string, password: string) => {
