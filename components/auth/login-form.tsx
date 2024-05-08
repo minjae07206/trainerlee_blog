@@ -60,7 +60,28 @@ const LoginForm = () => {
         backButtonHref="/auth/register"
         showSocial
         >
-            <form {...form} onSubmit={form.handleSubmit(()=>{})} className={style.loginForm}>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(()=>{})} className={style.loginForm}>
+                    <div>
+                        <FormField control={form.control} name='email'
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input
+                                    {...field}
+                                    placeholder=''
+                                    type='email'
+                                    />
+                                </FormControl>
+                                <FormMessage/>
+                            </FormItem>
+                        )}
+                        />
+                    </div>
+                </form>
+            </Form>
+            <form className={style.loginForm}>
                 <div>
                     <label htmlFor="email">Email</label>
                     {/* input disabled while isPending, that is while login logic is doing work */}
