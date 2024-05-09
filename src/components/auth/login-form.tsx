@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
+import { FormError } from '../form-error';
 import {
     Form,
     FormControl,
@@ -17,7 +18,8 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 // useTransition is a React Hook that lets you update the state without blocking the UI.
 import { useTransition } from 'react';
 const LoginForm = () => {
@@ -32,10 +34,10 @@ const LoginForm = () => {
             password: ""
         }
     })
-    const submitLoginForm:any =  (event: any) => {
-        event.preventDefault()
-        const email:string = event.target[0].value
-        const password:string = event.target[1].value
+    const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+        console.log(values)
+        const email:string = "1"
+        const password:string = "2"
         if (email.length === 0) {
             setEmailError("Invalid email")
         } else {
@@ -61,7 +63,7 @@ const LoginForm = () => {
         showSocial
         >
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(()=>{})} className={style.loginForm}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
                     <div>
                         <FormField control={form.control} name='email'
                         render={({ field }) => (
@@ -70,7 +72,7 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input
                                     {...field}
-                                    placeholder=''
+                                    placeholder='asds'
                                     type='email'
                                     />
                                 </FormControl>
@@ -78,23 +80,27 @@ const LoginForm = () => {
                             </FormItem>
                         )}
                         />
+                        <FormField control={form.control} name='password'
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                    <Input
+                                    {...field}
+                                    placeholder=''
+                                    type='password'
+                                    />
+                                </FormControl>
+                                <FormMessage/>
+                            </FormItem>
+                        )}
+                        />
                     </div>
+                    <FormError message='Something went wrong' />
+                    <button type='submit' disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
                 </form>
             </Form>
-            <form className={style.loginForm}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    {/* input disabled while isPending, that is while login logic is doing work */}
-                    <input disabled={isPending} type="email" name="email" placeholder="example@gmail.com"></input>
-                    <span>{emailError}</span>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input disabled={isPending} type="password" name="password"></input>
-                    <span>{passwordError}</span>
-                </div>
-                <button disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
-            </form>
+                
         </CardWrapper>
         </div>
     )

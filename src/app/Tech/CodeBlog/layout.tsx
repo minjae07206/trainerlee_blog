@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
-import CodeBlogNavigation from "../../../../components/code_blog_navigation";
+import CodeBlogNavigation from "../../../components/code_blog_navigation";
 
 export const metadata: Metadata = {
   title: "CodeBlog | trainerlee",

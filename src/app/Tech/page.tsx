@@ -1,4 +1,4 @@
-import Post from '../../../components/post';
+import Post from '../../components/post';
 export default function Tech(){
     return <div>
         <Post></Post>
