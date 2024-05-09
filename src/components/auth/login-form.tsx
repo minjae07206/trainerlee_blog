@@ -6,7 +6,7 @@ import { LoginSchema } from "../../schemas";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import buttonStyle from '../styles/button.module.css';
+import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
 import { FormError } from '../form-error';
 import {
