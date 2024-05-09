@@ -42,8 +42,14 @@ const LoginForm = () => {
         console.log(values)
         startTransition(()=>{
             login(values).then((data)=>{
-                setError(data.error);
-                setSuccess(data.success);
+                if (data == undefined) {
+                    setError("")
+                    setSuccess("")
+                } else {
+                    setError(data.error);
+                    setSuccess("Successfully logged in!");
+                }
+               
             })
         })
         
