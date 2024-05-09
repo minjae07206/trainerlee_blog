@@ -9,6 +9,7 @@ import { useState } from 'react';
 import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
 import { FormError } from '../form-error';
+import { FormSuccess } from '../form-success';
 import {
     Form,
     FormControl,
@@ -25,8 +26,8 @@ import { useTransition } from 'react';
 const LoginForm = () => {
     // We can add the isPending variable to html tags(input) to stop it while isPending
     const [isPending, startTransition] = useTransition();
-    const [emailError, setEmailError]: [string, Function] = useState("");
-    const [passwordError, setPasswordError]: [string, Function] = useState("");
+    const [success, setSuccess] = useState<string | undefined>("");
+    const [error, setError] = useState<string | undefined>("");
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -35,21 +36,15 @@ const LoginForm = () => {
         }
     })
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+        // clear all Errors and success messages when user clicks submit:
+        setError("");
+        setSuccess("");
         console.log(values)
-        const email:string = "1"
-        const password:string = "2"
-        if (email.length === 0) {
-            setEmailError("Invalid email")
-        } else {
-            setEmailError("")
-        }
-        if (password.length === 0) {
-            setPasswordError("Invalid password")
-        } else {
-            setPasswordError("")
-        }
         startTransition(()=>{
-            login(email, password)
+            login(values).then((data)=>{
+                setError(data.error);
+                setSuccess(data.success);
+            })
         })
         
         
@@ -71,12 +66,13 @@ const LoginForm = () => {
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
                                     <Input
+                                    disabled={isPending}
                                     {...field}
-                                    placeholder='asds'
+                                    placeholder=''
                                     type='email'
                                     />
                                 </FormControl>
-                                <FormMessage/>
+                                <FormMessage className={style.loginMessage} />
                             </FormItem>
                         )}
                         />
@@ -86,17 +82,19 @@ const LoginForm = () => {
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input
+                                    disabled={isPending}
                                     {...field}
                                     placeholder=''
                                     type='password'
                                     />
                                 </FormControl>
-                                <FormMessage/>
+                                <FormMessage className={style.loginMessage} />
                             </FormItem>
                         )}
                         />
                     </div>
-                    <FormError message='Something went wrong' />
+                    <FormError message={error} />
+                    <FormSuccess message={success} />
                     <button type='submit' disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
                 </form>
             </Form>

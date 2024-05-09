@@ -1,3 +1,5 @@
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import style from '../styles/logincard.module.css' 
 interface FormErrorProps {
     message?: string;
 }
@@ -5,9 +7,10 @@ interface FormErrorProps {
 export const FormError = ({
     message,
 }: FormErrorProps) => {
-    if (!message) { return null};
+    if (!message) return null;
     return (
-        <div>
+        <div className={style.formError}>
+            <ExclamationTriangleIcon className={style.triangleIcon}/>
             <p>{message}</p>
         </div>
     )
