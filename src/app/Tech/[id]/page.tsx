@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import fs from 'fs'
 import { QueryResultRow } from 'pg';
 import React from "react";
-import style from '../../../../styles/postfull.module.css';
+import style from '../../../styles/postfull.module.css';
 
 export default async function FullPost({
     params: { id },
