@@ -1,4 +1,6 @@
 import Credentials from "next-auth/providers/credentials";
+import Github from "next-auth/providers/credentials";
+import Google from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
 import { LoginSchema } from "./schemas";
@@ -7,6 +9,8 @@ import { getUserByEmail } from "./data/user";
 
 export default { 
     providers: [
+        Github,
+        Google,
         Credentials({
             async authorize(credentials) {
                 const validatedFields = LoginSchema.safeParse(credentials);
