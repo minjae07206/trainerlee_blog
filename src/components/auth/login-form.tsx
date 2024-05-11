@@ -3,6 +3,7 @@ import z from 'zod'
 import { CardWrapper } from "./card-wrapper";
 import style from '../../styles/logincard.module.css';
 import { LoginSchema } from "../../schemas";
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
@@ -24,6 +25,10 @@ import { Button } from "@/components/ui/button";
 // useTransition is a React Hook that lets you update the state without blocking the UI.
 import { useTransition } from 'react';
 const LoginForm = () => {
+    const searchParams = useSearchParams();
+    const urlError = searchParams.get("error") === "OAuthAccountNotLinked"
+        ? "Email already in use with different provider."
+        : ""; 
     // We can add the isPending variable to html tags(input) to stop it while isPending
     const [isPending, startTransition] = useTransition();
     const [success, setSuccess] = useState<string | undefined>("");
@@ -42,14 +47,8 @@ const LoginForm = () => {
         console.log(values)
         startTransition(()=>{
             login(values).then((data)=>{
-                if (data == undefined) {
-                    setError("")
-                    setSuccess("")
-                } else {
-                    setError(data.error);
-                    setSuccess("Successfully logged in!");
-                }
-               
+                setError(data?.error)
+                setSuccess(data?.success)
             })
         })
         
@@ -99,7 +98,7 @@ const LoginForm = () => {
                         )}
                         />
                     </div>
-                    <FormError message={error} />
+                    <FormError message={error || urlError} />
                     <FormSuccess message={success} />
                     <button type='submit' disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
                 </form>
