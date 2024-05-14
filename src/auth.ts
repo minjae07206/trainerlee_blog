@@ -49,6 +49,11 @@ export const {
       //Allow OAuth without verification
       if (account?.provider !== "credentials") return true;
       const existingUser = await getUserById(user.id);
+      // prevent  sign in with email verification
+      if (!existingUser?.emailVerified) return false;
+
+
+      // Todo: Create 2FA check
       return true;
     },
     async session ({ token, session }) {

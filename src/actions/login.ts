@@ -7,7 +7,7 @@ import { AuthError } from 'next-auth';
 import { generateVerificationToken } from '@/app/lib/tokens';
 import { getUserByEmail } from '@/data/user';
 import { userAgent } from 'next/server';
-
+import { sendVerificationEmail } from '@/app/lib/email';
 export const login = async (values: z.infer<typeof LoginSchema>) => {
     const validatedFields = LoginSchema.safeParse(values);
     if (!validatedFields.success) {
@@ -21,10 +21,14 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
         return { error: "Email does not exists!"}
     }
 
+
+
     if (!existingUser.emailVerified) {
-        const verficationToken = await generateVerificationToken(existingUser.email);
+        const verificationToken = await generateVerificationToken(existingUser.email);
+        //Email verification
+        await sendVerificationEmail(verificationToken.email, verificationToken.token);
         return { success: "Confirmation email sent!"}
-    }   
+    }
 
     try {
         await signIn("credentials", {

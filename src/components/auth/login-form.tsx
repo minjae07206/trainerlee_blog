@@ -11,6 +11,7 @@ import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
 import { FormError } from '../form-error';
 import { FormSuccess } from '../form-success';
+import Link from 'next/link';
 import {
     Form,
     FormControl,
@@ -77,6 +78,11 @@ const LoginForm = () => {
                                     type='email'
                                     />
                                 </FormControl>
+                                <Button>
+                                    <Link href={'/auth/reset'}>
+                                        Forgot Password?
+                                    </Link>
+                                </Button>
                                 <FormMessage className={style.loginMessage} />
                             </FormItem>
                         )}
