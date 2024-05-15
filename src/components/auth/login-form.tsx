@@ -29,9 +29,10 @@ const LoginForm = () => {
     const searchParams = useSearchParams();
     const urlError = searchParams.get("error") === "OAuthAccountNotLinked"
         ? "Email already in use with different provider."
-        : ""; 
+        : "";
     // We can add the isPending variable to html tags(input) to stop it while isPending
     const [isPending, startTransition] = useTransition();
+    const [showTwoFactor, setShowTwoFactor] = useState(false)
     const [success, setSuccess] = useState<string | undefined>("");
     const [error, setError] = useState<string | undefined>("");
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -46,73 +47,106 @@ const LoginForm = () => {
         setError("");
         setSuccess("");
         console.log(values)
-        startTransition(()=>{
-            login(values).then((data)=>{
-                setError(data?.error)
-                setSuccess(data?.success)
+        startTransition(() => {
+            login(values).then((data) => {
+                if (data?.error) {
+                    form.reset();
+                    setError(data.error);
+                }
+                if (data?.success) {
+                    form.reset();
+                    setSuccess(data.success);
+                }
+                if (data?.twoFactor) {
+                    setShowTwoFactor(true);
+                }
             })
+                .catch(() => setError("Something went wrong."))
         })
-        
-        
+
+
     }
     return (
         <div className={style.cardwrapper} >
-        <CardWrapper 
-        headerLabel="Welcome back!"
-        backButtonLabel="Don't have an account?"
-        backButtonHref="/auth/register"
-        showSocial
-        >
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
-                    <div>
-                        <FormField control={form.control} name='email'
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Email</FormLabel>
-                                <FormControl>
-                                    <Input
-                                    disabled={isPending}
-                                    {...field}
-                                    placeholder=''
-                                    type='email'
+            <CardWrapper
+                headerLabel="Welcome back!"
+                backButtonLabel="Don't have an account?"
+                backButtonHref="/auth/register"
+                showSocial
+            >
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
+                        <div>
+                            {showTwoFactor && (
+                                <FormField control={form.control} name='code'
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Two Factor Code</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isPending}
+                                                {...field}
+                                                placeholder=''
+                                            />
+                                        </FormControl>
+                                        <FormMessage className={style.loginMessage} />
+                                    </FormItem>
+                                )}
+                            />
+                            )}
+                            {!showTwoFactor && (
+                                <>
+                                    <FormField control={form.control} name='email'
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Email</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        disabled={isPending}
+                                                        {...field}
+                                                        placeholder=''
+                                                        type='email'
+                                                    />
+                                                </FormControl>
+                                                <FormMessage className={style.loginMessage} />
+                                            </FormItem>
+                                        )}
                                     />
-                                </FormControl>
-                                <Button>
-                                    <Link href={'/auth/reset'}>
-                                        Forgot Password?
-                                    </Link>
-                                </Button>
-                                <FormMessage className={style.loginMessage} />
-                            </FormItem>
-                        )}
-                        />
-                        <FormField control={form.control} name='password'
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Password</FormLabel>
-                                <FormControl>
-                                    <Input
-                                    disabled={isPending}
-                                    {...field}
-                                    placeholder=''
-                                    type='password'
+                                    <FormField control={form.control} name='password'
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Password</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        disabled={isPending}
+                                                        {...field}
+                                                        placeholder=''
+                                                        type='password'
+                                                    />
+                                                </FormControl>
+                                                <button className={buttonStyle.forgotpassword}>
+                                                    <Link href={'/auth/reset'}>
+                                                        Forgot Password?
+                                                    </Link>
+                                                </button>
+                                                <FormMessage className={style.loginMessage} />
+                                            </FormItem>
+                                        )}
                                     />
-                                </FormControl>
-                                <FormMessage className={style.loginMessage} />
-                            </FormItem>
-                        )}
-                        />
-                    </div>
-                    <FormError message={error || urlError} />
-                    <FormSuccess message={success} />
-                    <button type='submit' disabled={isPending} className={buttonStyle.btn} style={{backgroundColor: "black", color: "white", width: '44%'}}>Login</button>
-                </form>
-            </Form>
-                
-        </CardWrapper>
+                                </>
+                            )}
+                        </div>
+                        <FormError message={error || urlError} />
+                        <FormSuccess message={success} />
+                        <button type='submit' disabled={isPending} className={buttonStyle.btn} style={{ backgroundColor: "black", color: "white", width: '44%' }}>
+                            {showTwoFactor ? "Confirm" : "Login"}
+                        </button>
+                    </form>
+                </Form>
+
+            </CardWrapper>
         </div>
     )
 }
 
-export {LoginForm};
+export { LoginForm };

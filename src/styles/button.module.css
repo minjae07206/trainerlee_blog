@@ -40,3 +40,9 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     /* Increased shadow on hover */
 }
+
+.forgotpassword {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+}
