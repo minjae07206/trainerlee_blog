@@ -58,6 +58,7 @@ export const {
       if (!existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
         if (!twoFactorConfirmation) {
+          console.log(!twoFactorConfirmation)
           return false;
         }
         // Delete 2 factor authentication for next sign in
