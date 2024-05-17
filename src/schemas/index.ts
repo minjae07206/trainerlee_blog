@@ -34,3 +34,19 @@ export const RegisterSchema = z.object({
     }
     )
 })
+
+export const PostSchema = z.object({
+    title: z.string().min(1, {
+        message: "Title is required"
+    }),
+    description: z.string().min(1, {
+        message: "Description is required"
+    }),
+    category: z.string().min(1, {
+        message: "Category is required"
+    }),
+    tags: z.optional(z.string()),
+    link: z.string().min(1, {
+        message: "Link is required"
+    }),
+})

@@ -16,7 +16,7 @@ export const RoleGate = ({
     const role = useCurrentRole();
     if (role !== allowedRole) {
         return (
-            <FormError message="You do not have permission."/>
+            <div></div>
         )
     }
 
