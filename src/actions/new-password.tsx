@@ -3,7 +3,7 @@ import { db } from '../app/lib/db';
 import { NewPasswordSchema } from '@/schemas';
 import { getPasswordResetTokenByToken } from '@/data/password-reset-token';
 import { getUserByEmail } from '@/data/user';
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 export const newPassword = async (values: z.infer<typeof NewPasswordSchema>, token?: string | null) => {
     if (!token) {
         return { error: "Missing token!"}
