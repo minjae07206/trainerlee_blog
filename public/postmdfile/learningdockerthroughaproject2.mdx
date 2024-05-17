@@ -3,9 +3,10 @@
 This project was mainly about learning Docker, so we decided to create a web application where a user can upload photos of faces and the ml-client would return the dominant emotion.
 We used the deepface module as it is well known, and the API was easy to use. 
 The flow of what happens to the photo when a user uploads is as follows:
-1. The photo gets saved to the database with other relative information, one important field is the "processed" field, which is initially set to False.
-2. Every 30 seconds(time can be changed), the ml-client sends a request to check whether there are unprocessed images, and proccess them by adding the emotion attribute and sets "processed" as True
-3. The user will be able to see the result of the emotion for the image. 
+
+    1. The photo gets saved to the database with other relative information, one important field is the "processed" field, which is initially set to False.
+    2. Every 30 seconds(time can be changed), the ml-client sends a request to check whether there are unprocessed images, and proccess them by adding the emotion attribute and sets "processed" as True
+    3. The user will be able to see the result of the emotion for the image. 
 
 I am not sure why, but my teammates decided that we will not implement a backend for the ml-client, which is why we took a slightly weird approach of running the processing function every 30 seconds instead. 
 
@@ -31,7 +32,7 @@ os.environ.get("DB_USER")
 
 Although building docker images worked perfectly on my computer, I got a message saying that building docker image is failing on another machine with the following error message:
 
-Insert photo Here
+![Screenshot](/postimgfile/Screenshot_2024-05-0516312.png)
 
 Because there was no problem on my side, it was really hard to know what was causing the problem and I also could not fix it.
 Then, thanks to a classmate who had a similar problem, I found out that it was something to do with pkg-config, and adding the following lines in the Dockerfile solved the problem:
@@ -41,3 +42,8 @@ pkg-config \
 libhdf5-dev \
 gcc
 ```
+
+## Outtake
+
+Overall, I have learned the usefullness of docker in the sense that creating a virtual machine is important so that everyone is on the same page when viewing or building a program.
+I also learned that for unknown reasons there still could be many unforseen errors even when using a virtual machine to develop.
