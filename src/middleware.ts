@@ -5,6 +5,7 @@ import {
     apiAuthPrefix,
     publicRoutes,
     authRoutes,
+    adminRoutes,
 } from "./routes";
 import next from "next";
 const { auth } = NextAuth(authConfig);
@@ -15,8 +16,9 @@ export default auth((req) => {
   console.log(nextUrl)
   const isLoggedIn = !!req.auth;
   const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
-  const isPublicRoutes = publicRoutes.includes(nextUrl.pathname);
+  const isPublicRoutes = nextUrl.pathname.startsWith(publicRoutes) || nextUrl.pathname === '/auth/new-verification';
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
+  const isAdminRoutes = adminRoutes.includes(nextUrl.pathname)
 
   if (isApiAuthRoutes){
     return;
@@ -27,6 +29,15 @@ export default auth((req) => {
     }
     return;
   }
+
+    /* later there it also needs to check for admin role */
+  if (isAdminRoutes) {
+    if (!isLoggedIn) {
+      return Response.redirect(new URL("/auth/login", nextUrl))
+    }
+  }
+
+
   if (!isLoggedIn && !isPublicRoutes) {
     return Response.redirect(new URL("/auth/login", nextUrl))
   }
