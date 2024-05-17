@@ -1,6 +1,9 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { boolean } from "zod";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { signOut } from "next-auth/react";
+
 import style from '../../styles/button.module.css';
     {/* ? Means optional prop */}
 interface LoginButtonProps {

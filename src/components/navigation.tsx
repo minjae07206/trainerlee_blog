@@ -4,9 +4,12 @@ import { usePathname } from 'next/navigation';
 import styles from '../styles/navbar.module.css';
 import React from "react";
 import { LoginButton } from './auth/login-button';
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { LogoutButton } from './auth/logout-button';
 
 export default function Navigation() {
-    const path = usePathname()
+    const path = usePathname();
+    const user = useCurrentUser();
     return (
         <nav className={styles.nav}>
             <ul>
@@ -14,7 +17,14 @@ export default function Navigation() {
                 <li className={path === '/Tech' ? styles.selected : ''}><Link href="/Tech">💻 Tech</Link></li>
                 <li className={path === '/BoardGames' ? styles.selected : ''}><Link href="/BoardGames">🎲 Board Games</Link></li>
                 <li className={path === '/Baseball' ? styles.selected : ''}><Link href="/Baseball">⚾ Baseball</Link></li>
-                <li><LoginButton>Login</LoginButton></li>
+                { !user && 
+                    <li><LoginButton>Login</LoginButton></li>
+                }
+                {
+                    user && 
+                    <li><LogoutButton>Logout</LogoutButton></li>
+                }
+                
             </ul>
         </nav>
     )

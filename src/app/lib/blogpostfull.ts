@@ -5,6 +5,7 @@ export async function fetchPostFull(current_post_uuid:string){
     try {
         const data = await sql`
         SELECT * FROM blog WHERE post_uuid = ${current_post_uuid}`;
+        console.log(data)
         return data.rows;
     // need to handle when user manually enters into the url of a random id. We need to redirect them to a page not found 404 page
     } catch (error) {

@@ -55,7 +55,7 @@ export const {
 
 
       // Todo: Create 2FA check
-      if (!existingUser.isTwoFactorEnabled) {
+      if (existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
         if (!twoFactorConfirmation) {
           console.log(!twoFactorConfirmation)

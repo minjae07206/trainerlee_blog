@@ -67,13 +67,12 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     }
 
     //Before user tries to log in
-
+    
     if (existingUser.isTwoFactorEnabled && existingUser.email) {
         const twoFactorToken = await generateTwoFactorToken(existingUser.email);
         await sendTwoFactorTokenEmail(twoFactorToken.email, twoFactorToken.token);
         return { twoFactor: true }
     }
-
     try {
         await signIn("credentials", {
             email,

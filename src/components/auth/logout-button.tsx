@@ -1,11 +1,11 @@
 "user client";
-
+import style from '../../styles/button.module.css'
 import { logout } from "@/actions/logout";
 interface LogoutButtonProps {
     children?: React.ReactNode;
 }
 
-export const LogoutButton = async ({
+export const LogoutButton = ({
     children
 }: LogoutButtonProps) => {
     const onClick = () => {
@@ -13,6 +13,8 @@ export const LogoutButton = async ({
     }
 
     return (
-        <span onClick={onClick}>{children}</span>
+        <button className={style.btn} style={{width: "100px", height: "40px", verticalAlign: 'top'}} onClick={onClick}>
+            {children}
+        </button>
     )
 }

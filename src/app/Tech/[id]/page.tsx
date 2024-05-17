@@ -1,4 +1,4 @@
-import { fetchPostFull } from "@/app/lib/blogpostfull";
+import { fetchPostFull } from "../../lib/blogpostfull";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import fs from 'fs'
