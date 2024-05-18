@@ -10,7 +10,7 @@ export default async function Home() {
         <p>Hello, my name is Minjae Lee, a aspring software developer who values communication and records.</p>
         <div className={style.snsButtons}>
           <a href="https://github.com/minjae07206" target="_blank">Github</a>
-          <a>Resume</a>
+          <a href="https://docs.google.com/document/d/1UjZOSCiyKS724yKKJtS5Wyx_t8OSPZFiHi_KINySCzk/edit?usp=sharing">Resume</a>
           <a href="https://www.linkedin.com/in/minjae-lee-23204817a/" target="_blank">LinkedIn</a>
         </div>
         <Arrow></Arrow>
