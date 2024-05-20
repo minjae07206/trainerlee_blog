@@ -14,7 +14,9 @@ export default async function FullPost({
     {/* Why not use fetch here? because we are getting data through vercel's sql from fethPostFull. 
     Is it better to use fetch? I'm not sure, but fetch only takes urls, not sql query */}
     const currentPostFull: QueryResultRow[]= await fetchPostFull(id);
+    console.log(__dirname);
     const markdownContent = fs.readFileSync(currentPostFull[0].link, 'utf-8');
+    
     return (
         <div>
             <div className={style.header_values}>
