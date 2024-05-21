@@ -1,0 +1,36 @@
+## fs.readfileSync() not working in vercel
+
+During trainerlee_blog development, there was a issue where readfileSync does not read markdown files correctly, returning an error that the directory does not exist.
+However, the fs.readfileSync worked when I run `npm run dev` locally.
+This was the original version, where `currentPostFull[0].link` contained the path from root directory of the project to the markdown file.
+```
+const currentPostFull: QueryResultRow[]= await fetchPostFull(id);
+const markdownContent = fs.readFileSync(currentPostFull[0].link, 'utf-8');
+```
+
+## process.cwd()
+
+On the official document of vercel, they recommend using `process.cwd()` when using `fs.readFileSync`.
+Vercel has a different way of determining the root directory, so `process.cwd()` determines the root directory.
+They say not to use `__dirname`.
+
+Here is an example from vercel's official website.
+
+```
+import fs from 'fs';
+import path from 'path';
+
+export function GET(request) {
+  let usersPath = path.join(process.cwd(), 'users.json');
+  let file = fs.readFileSync(usersPath);
+  return new Response(file);
+}
+```
+
+Here is my example that works both locally and in vercel, but I changed the link to only include the name of the markdown file, instead of including the path as well.
+It seems that `process.cwd()` takes me to the root directory of the project. 
+
+```
+const currentPostFull: QueryResultRow[]= await fetchPostFull(id);
+const markdownContent = fs.readFileSync(process.cwd() + '/public/postmdfile/' + currentPostFull[0].link, 'utf-8');
+```
