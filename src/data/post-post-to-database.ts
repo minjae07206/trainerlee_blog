@@ -41,7 +41,8 @@ const postPostToDatabase = async (values: z.infer<typeof PostSchema>) => {
         
 
         return { success: "Post posted successfully." }
-    } catch {
+    } catch (error){
+        console.log(error)
         return {error: "Something went wrong with posting"}
     }
     
