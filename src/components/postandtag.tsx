@@ -36,12 +36,12 @@ export default function PostAndTag({
                     tagsList.map((tag) => {
                         const tagName = tag.tagName
                         return (
-                            <button onClick={(event) => { onclick(event) }} className={styles.tag}>#{tagName}</button>
+                            <button key={tagName} onClick={(event) => { onclick(event) }} className={styles.tag}>#{tagName}</button>
                         )
                     })
                 }
                 <div className={style.thumbnails}>
-                    {filteredPosts.map((post, index) => (
+                    {filteredPosts.map((post) => (
                         <div className={style.thumbnail} key={post.post_uuid}>
                             {/*Passing down post_uuid to link the page content page*/}
                             <h2><Link href="/Tech/[variable]" as={`/Tech/${post.post_uuid}`}>{post.title}</Link></h2>
