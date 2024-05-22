@@ -1,3 +1,4 @@
+'use server'
 import { db } from '../app/lib/db';
 import { PostSchema } from '@/schemas';
 import z from 'zod';
