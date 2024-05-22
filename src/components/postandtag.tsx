@@ -41,7 +41,7 @@ export default function PostAndTag({
                     })
                 }
                 <div className={style.thumbnails}>
-                    {filteredPosts.map((post) => (
+                    {filteredPosts.map((post, index) => (
                         <div className={style.thumbnail} key={post.post_uuid}>
                             {/*Passing down post_uuid to link the page content page*/}
                             <h2><Link href="/Tech/[variable]" as={`/Tech/${post.post_uuid}`}>{post.title}</Link></h2>
