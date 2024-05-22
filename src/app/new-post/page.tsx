@@ -10,6 +10,7 @@ import buttonStyle from '../../styles/button.module.css';
 import { login } from '../../actions/login';
 import { FormError } from '../../components/form-error';
 import { FormSuccess } from '../../components/form-success';
+import postPostToDatabase from '@/data/post-post-to-database';
 import {
     Form,
     FormControl,
@@ -44,9 +45,11 @@ const NewPost = () => {
         setSuccess("");
         console.log(values)
         startTransition(() => {
-            console.log(1)
+            postPostToDatabase(values).then((data) =>{
+                setError(data.error);
+                setSuccess(data.success);
+            })
         })
-
 
     }
     return (

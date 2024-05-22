@@ -20,7 +20,6 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 // useTransition is a React Hook that lets you update the state without blocking the UI.
 import { useTransition } from 'react';
 const RegisterForm = () => {
@@ -40,7 +39,6 @@ const RegisterForm = () => {
         // clear all Errors and success messages when user clicks submit:
         setError("");
         setSuccess("");
-        console.log(values)
         startTransition(() => {
             register(values).then((data) => {
                 setError(data.error);
