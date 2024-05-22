@@ -1,0 +1,28 @@
+.tag {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    background: none;
+    cursor: pointer;
+    margin: 5px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.tag:hover {
+    color: white;
+    background-color: black;
+    transform: scale(1.05); /* Increase size by 5% */
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
