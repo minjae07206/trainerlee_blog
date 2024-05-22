@@ -92,4 +92,5 @@ model TwoFactorConfirmation {
 
 model TagsList {
   tagName String @unique
+  count Int
 }
