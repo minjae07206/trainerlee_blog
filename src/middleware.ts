@@ -7,7 +7,6 @@ import {
     authRoutes,
     adminRoutes,
 } from "./routes";
-import next from "next";
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
