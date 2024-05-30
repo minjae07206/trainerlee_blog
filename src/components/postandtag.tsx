@@ -3,6 +3,7 @@ import { QueryResultRow } from "@vercel/postgres";
 import style from '../styles/thumbnail.module.css';
 import Link from "next/link";
 import styles from '@/styles/tagslist.module.css';
+import buttonStyle from "@/styles/button.module.css";
 import { Dispatch, SetStateAction, useState } from 'react';
 
 interface PostAndTagProps {
@@ -19,14 +20,38 @@ export default function PostAndTag({
     allBlogPosts,
 }: PostAndTagProps) {
     const [filteredPosts, setfilteredPosts] = useState(allBlogPosts);
+    const [sortButtonLabel, setSortButtonLabel] = useState("Sort by oldest⬇️")
+    const [sortedPosts, setSortedPosts] = useState(allBlogPosts);
     const filterBlogPosts = (blogPosts: QueryResultRow[], currentTagName: string) => {
         const filteredBlogPosts = blogPosts.filter((post) => {
             return post.tags.includes(currentTagName);
         })
         return filteredBlogPosts;
     }
+    const sortBlogPosts = (filteredBlogPosts: QueryResultRow[]) => {
+        const sortedBlogPosts = filteredBlogPosts.sort((a, b) => {
+            const dateA = new Date(a.formatted_date.split('-').reverse().join('-'));
+            const dateB = new Date(b.formatted_date.split('-').reverse().join('-'));
+            if (sortButtonLabel === "Sort by oldest⬇️") {
+                return dateA.getTime() - dateB.getTime();
+            } else {
+                return dateB.getTime() - dateA.getTime();
+            }
+            
+        });
+        return sortedBlogPosts;
+    }
     const onclick = (event: any, tagName:string) => {
         setfilteredPosts(filterBlogPosts(allBlogPosts, tagName))
+    }
+    const onsortClick = () => {
+        if (sortButtonLabel === "Sort by oldest⬇️") {
+            setSortButtonLabel("Sort by newest⬆️");
+        } else {
+            setSortButtonLabel("Sort by oldest⬇️");
+        }
+        setSortedPosts(sortBlogPosts(filteredPosts));
+        
     }
     return (
         <>
@@ -40,8 +65,11 @@ export default function PostAndTag({
                     })
                 }
             </div>
+            <div>
+                <button onClick={()=>{onsortClick()}} className={buttonStyle.sortButton}>{sortButtonLabel}</button>
+            </div>
             <div className={style.thumbnails}>
-                {filteredPosts.map((post) => (
+                {sortedPosts.map((post) => (
                     <div className={style.thumbnail} key={post.post_uuid}>
                         {/*Passing down post_uuid to link the page content page*/}
                         <h2><Link href="/Tech/[variable]" as={`/Tech/${post.post_uuid}`}>{post.title}</Link></h2>

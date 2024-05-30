@@ -46,3 +46,46 @@
     background-color: transparent;
     border: none;
 }
+
+.sortButton {
+    margin-left: 24%;
+    margin-top: 2%;
+    background-color: transparent;
+    /* Transparent background */
+    border: 1px solid grey;
+    /* 5px solid black border */
+    color: black;
+    /* Black text */
+    padding: 10px 10px;
+    /* Padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove default underline */
+    display: inline-block;
+    /* Make it inline-block */
+    font-size: 12px;
+    /* Font size */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 8px;
+    /* Border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover */
+    position: relative;
+    /* Position for sand filling animation */
+    overflow: hidden;
+    /* Hide overflowing sand */;
+}
+
+.sortButton:hover {
+    background-color: black;
+    /* Darker background on hover */
+    transform: scale(1.05);
+    /* Increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow on hover */
+    color: white;
+}
