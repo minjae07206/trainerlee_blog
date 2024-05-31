@@ -19,12 +19,12 @@ export default function PostAndTag({
     tagsList,
     allBlogPosts,
 }: PostAndTagProps) {
-    const [filteredPosts, setfilteredPosts] = useState(allBlogPosts);
-    const [sortButtonLabel, setSortButtonLabel] = useState("Sort by oldest⬇️")
+    const [filteredPosts, setFilteredPosts] = useState(allBlogPosts);
+    const [sortButtonLabel, setSortButtonLabel] = useState("Oldest first⬇️")
     const [sortedPosts, setSortedPosts] = useState(allBlogPosts);
-    useEffect(() => {
+    useEffect(()=>{
         setSortedPosts(sortBlogPosts(filteredPosts));
-    }, [filteredPosts, sortButtonLabel]);
+    }, [sortButtonLabel, filteredPosts])
     const filterBlogPosts = (blogPosts: QueryResultRow[], currentTagName: string) => {
         const filteredBlogPosts = blogPosts.filter((post) => {
             return post.tags.includes(currentTagName);
@@ -35,10 +35,10 @@ export default function PostAndTag({
         const sortedBlogPosts = filteredBlogPosts.sort((a, b) => {
             const dateA = new Date(a.formatted_date.split('-').reverse().join('-'));
             const dateB = new Date(b.formatted_date.split('-').reverse().join('-'));
-            if (sortButtonLabel === "Sort by oldest⬇️") {
-                return dateA.getTime() - dateB.getTime();
-            } else {
+            if (sortButtonLabel === "Oldest first⬇️") {
                 return dateB.getTime() - dateA.getTime();
+            } else {
+                return dateA.getTime() - dateB.getTime();
             }
             
         });
@@ -46,14 +46,14 @@ export default function PostAndTag({
     }
     const handleTagClick = (event: any, tagName: string) => {
         const filteredBlogPosts = filterBlogPosts(allBlogPosts, tagName);
-        setfilteredPosts(filteredBlogPosts);
+        setFilteredPosts(filteredBlogPosts);
     };
 
     const handleSortClick = () => {
-        if (sortButtonLabel === "Sort by oldest⬇️") {
-            setSortButtonLabel("Sort by newest⬆️");
+        if (sortButtonLabel === "Oldest first⬇️") {
+            setSortButtonLabel("Newest first⬆️");
         } else {
-            setSortButtonLabel("Sort by oldest⬇️");
+            setSortButtonLabel("Oldest first⬇️");
         }
     };
 
