@@ -19,22 +19,26 @@ export default function PostAndTag({
     tagsList,
     allBlogPosts,
 }: PostAndTagProps) {
-    const [filteredPosts, setFilteredPosts] = useState(allBlogPosts);
-    const [sortButtonLabel, setSortButtonLabel] = useState("Oldest first⬇️")
+    const [sortButtonLabel, setSortButtonLabel] = useState("Newest first⬇️")
     const [sortedPosts, setSortedPosts] = useState(allBlogPosts);
-    useEffect(()=>{
-        setSortedPosts(sortBlogPosts(filteredPosts));
-    }, [sortButtonLabel, filteredPosts])
+    const [currentTagName, setCurrentTagName] = useState("");
     const filterBlogPosts = (blogPosts: QueryResultRow[], currentTagName: string) => {
+        console.log(currentTagName)
+        if (currentTagName === "") {
+            return blogPosts;
+        }
         const filteredBlogPosts = blogPosts.filter((post) => {
             return post.tags.includes(currentTagName);
         })
         return filteredBlogPosts;
     }
-    const sortBlogPosts = (filteredBlogPosts: QueryResultRow[]) => {
+    const sortBlogPosts = (filteredBlogPosts: QueryResultRow[], sortingOrder:boolean) => {
         const sortedBlogPosts = filteredBlogPosts.sort((a, b) => {
             const dateA = new Date(a.formatted_date.split('-').reverse().join('-'));
             const dateB = new Date(b.formatted_date.split('-').reverse().join('-'));
+            if (sortingOrder) {
+                return dateB.getTime() - dateA.getTime();
+            }
             if (sortButtonLabel === "Oldest first⬇️") {
                 return dateB.getTime() - dateA.getTime();
             } else {
@@ -45,8 +49,10 @@ export default function PostAndTag({
         return sortedBlogPosts;
     }
     const handleTagClick = (event: any, tagName: string) => {
+        setCurrentTagName(tagName);
         const filteredBlogPosts = filterBlogPosts(allBlogPosts, tagName);
-        setFilteredPosts(filteredBlogPosts);
+        const sortingOrder = true;
+        setSortedPosts(sortBlogPosts(filteredBlogPosts, sortingOrder));
     };
 
     const handleSortClick = () => {
@@ -55,6 +61,8 @@ export default function PostAndTag({
         } else {
             setSortButtonLabel("Oldest first⬇️");
         }
+        const filteredBlogPosts = filterBlogPosts(allBlogPosts, currentTagName);
+        setSortedPosts(sortBlogPosts(filteredBlogPosts, false))
     };
 
     return (
