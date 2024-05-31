@@ -4,7 +4,7 @@ import style from '../styles/thumbnail.module.css';
 import Link from "next/link";
 import styles from '@/styles/tagslist.module.css';
 import buttonStyle from "@/styles/button.module.css";
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 interface PostAndTagProps {
     tagsList: TagObjectType[];
@@ -22,6 +22,9 @@ export default function PostAndTag({
     const [filteredPosts, setfilteredPosts] = useState(allBlogPosts);
     const [sortButtonLabel, setSortButtonLabel] = useState("Sort by oldest⬇️")
     const [sortedPosts, setSortedPosts] = useState(allBlogPosts);
+    useEffect(() => {
+        setSortedPosts(sortBlogPosts(filteredPosts));
+    }, [filteredPosts, sortButtonLabel]);
     const filterBlogPosts = (blogPosts: QueryResultRow[], currentTagName: string) => {
         const filteredBlogPosts = blogPosts.filter((post) => {
             return post.tags.includes(currentTagName);
@@ -41,44 +44,45 @@ export default function PostAndTag({
         });
         return sortedBlogPosts;
     }
-    const onclick = (event: any, tagName:string) => {
-        setfilteredPosts(filterBlogPosts(allBlogPosts, tagName))
-    }
-    const onsortClick = () => {
+    const handleTagClick = (event: any, tagName: string) => {
+        const filteredBlogPosts = filterBlogPosts(allBlogPosts, tagName);
+        setfilteredPosts(filteredBlogPosts);
+    };
+
+    const handleSortClick = () => {
         if (sortButtonLabel === "Sort by oldest⬇️") {
             setSortButtonLabel("Sort by newest⬆️");
         } else {
             setSortButtonLabel("Sort by oldest⬇️");
         }
-        setSortedPosts(sortBlogPosts(filteredPosts));
-        
-    }
+    };
+
     return (
         <>
             <div className={styles.tags}>
-                {
-                    tagsList.map((tag) => {
-                        const tagName = tag.tagName
-                        return (
-                            <button key={tagName} onClick={(event) => { onclick(event, tagName) }} className={styles.tag}>#{tagName}<span>({tag.count})</span></button>
-                        )
-                    })
-                }
+                {tagsList.map(tag => {
+                    const tagName = tag.tagName;
+                    return (
+                        <button key={tagName} onClick={(event) => handleTagClick(event, tagName)} className={styles.tag}>
+                            #{tagName}<span>({tag.count})</span>
+                        </button>
+                    );
+                })}
             </div>
             <div>
-                <button onClick={()=>{onsortClick()}} className={buttonStyle.sortButton}>{sortButtonLabel}</button>
+                <button onClick={handleSortClick} className={buttonStyle.sortButton}>
+                    {sortButtonLabel}
+                </button>
             </div>
             <div className={style.thumbnails}>
-                {sortedPosts.map((post) => (
+                {sortedPosts.map(post => (
                     <div className={style.thumbnail} key={post.post_uuid}>
-                        {/*Passing down post_uuid to link the page content page*/}
                         <h2><Link href="/Tech/[variable]" as={`/Tech/${post.post_uuid}`}>{post.title}</Link></h2>
                         <span>{post.description}</span>
                         <div>Last modify: {post.formatted_date}</div>
-                        <div className={style.tags}>{post.tags.map((tag: string, index: number) => (
+                        <div className={style.tags}>{post.tags.map((tag:string, index:number) => (
                             <div key={index} className={style.tag}>#{tag}</div>
-                        ))
-                        }</div>
+                        ))}</div>
                     </div>
                 ))}
             </div>
