@@ -23,7 +23,6 @@ export default function PostAndTag({
     const [sortedPosts, setSortedPosts] = useState(allBlogPosts);
     const [currentTagName, setCurrentTagName] = useState("");
     const filterBlogPosts = (blogPosts: QueryResultRow[], currentTagName: string) => {
-        console.log(currentTagName)
         if (currentTagName === "") {
             return blogPosts;
         }
