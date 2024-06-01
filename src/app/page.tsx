@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from '../styles/home.module.css';
 import Resume from '../components/resume';
 import Arrow from '../components/arrow'
+import { ResumeNavigation } from "@/components/resume_navigation";
 export default async function Home() {
   return (
     <div>
@@ -15,6 +16,7 @@ export default async function Home() {
         </div>
         <Arrow></Arrow>
       </div>
+      <ResumeNavigation></ResumeNavigation>
       <Resume></Resume>
     </div>
 
