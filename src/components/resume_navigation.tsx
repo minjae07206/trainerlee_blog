@@ -49,7 +49,6 @@ export const ResumeNavigation = () => {
                                             event.preventDefault();
                                             // Using querySelector doesn't work? Why?
                                             const resumeContent = Array.from(document.querySelectorAll('.activity-section'));
-                                            console.log(liId)
                                             const element = document.getElementById(`${liId}`)
                                             for (let activity of resumeContent) {
                                                 if (activity.children[1].innerHTML === liId) {
