@@ -1,0 +1,51 @@
+.resumeNav {
+    position: sticky;
+    top: 200px;
+    margin-left: 50px;
+    width: 400px;
+  }
+  
+  .categoryTag {
+    font-weight: bold;
+  }
+  
+  .activityTag {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative; /* Ensure ::before is positioned relative to each .activityTag */
+    display: inline-block; /* Adjust display for inline-block behavior */
+    cursor: pointer;
+  }
+  
+  .activityTag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105%;
+    height: 100%;
+    background-color: #8dc6ff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+    border-radius: 6px;
+  }
+  
+  .activityTag:hover::before,
+  .activityTag.active::before {
+      transform: scaleX(1);
+  }
+  
+  .activityTag:hover,
+  .activityTag.active {
+      color: #fff; /* Change text color on hover or when active */
+  }
+
+  /* Media query to hide .resumeNav on screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .resumeNav {
+      display: none;
+  }
+}

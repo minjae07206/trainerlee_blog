@@ -16,8 +16,10 @@ export default async function Home() {
         </div>
         <Arrow></Arrow>
       </div>
+      <div id="scrollArea" className={style.resumeAndResumeNav}>
       <ResumeNavigation></ResumeNavigation>
       <Resume></Resume>
+      </div>
     </div>
 
 

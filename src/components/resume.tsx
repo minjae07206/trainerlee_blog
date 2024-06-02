@@ -4,12 +4,12 @@ export default function Resume() {
   return (
     // The reason for not making the resume in a array and rendering each component separately:
     // Each experience is different so difficult to have a standarized structure.
-    <section className={style.resume}>
-      <article className='higher-section'>
+    <section id='resume' className={style.resume}>
+      <article className={`higher-section ${style.higherSection}`}>
         <h2>Work</h2>
         <div className={style.bar}></div>
         <article>
-          <div>
+        <div className={`activity-section ${style.activitySection}`}>
           <h3>Learning Assistant</h3>
           <h4>NYU Academic Resource Center</h4>
           <span>01/2021 - 05/2021</span>
@@ -21,11 +21,11 @@ export default function Resume() {
           </div>
         </article>
       </article>
-      <article className='higher-section'>
+      <article className={`higher-section ${style.higherSection}`}>
         <h2>Project</h2>
         <div className={style.bar}></div>
         <article>
-          <div>
+        <div className={`activity-section ${style.activitySection}`}>
           <h3>Trainer Lee&apos;s blog (Current page)</h3>
           <h4>Personal web page</h4>
           <span>04/2024 - Present</span>
@@ -43,11 +43,11 @@ export default function Resume() {
           </div>
         </article>
       </article>
-      <article className='higher-section'>
+      <article className={`higher-section ${style.higherSection}`}>
         <h2>Education</h2>
         <div className={style.bar}></div>
         <article>
-          <div>
+        <div className={`activity-section ${style.activitySection}`}>
           <h3>BSc in Computer Science</h3>
           <h4>New York University Shanghai</h4>
           <span>08/2019 - Present(Expected 05/2025)</span>
@@ -63,11 +63,11 @@ export default function Resume() {
           </div>
         </article>
       </article>
-      <article className='higher-section'>
+      <article className={`higher-section ${style.higherSection}`}>
         <h2>Other Experience</h2>
         <div className={style.bar}></div>
         <article>
-          <div>
+        <div className={`activity-section ${style.activitySection}`}>
             <h3>Staff (Contract)</h3>
             <h4>SSG.com</h4>
             <span>02/2023 - 07/2023</span>
@@ -76,7 +76,7 @@ export default function Resume() {
               <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Picked up online orders and packaged them for customers</li>
             </ul>
           </div>
-          <div>
+          <div className={`activity-section ${style.activitySection}`}>
             <h3>Military Service</h3>
             <h4>Republic of Korea Army</h4>
             <span>07/2021 - 01/2023</span>

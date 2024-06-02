@@ -11,7 +11,7 @@ export default function Arrow() {
       const bgImageHeight = backgroundImage.clientHeight;
       // Scroll the page to the bottom of the background image
       window.scrollTo({
-        top: bgImageHeight + 30,
+        top: bgImageHeight + 45,
         behavior: 'smooth' // Smooth scrolling behavior
     });
     } else{
