@@ -27,7 +27,7 @@ export default function Resume() {
         <article>
           <div className={`activity-section ${style.activitySection}`}>
           <h3>NYUSH Exchange Platform</h3>
-          <h4>School's second hand item exchange platform</h4>
+          <h4>School&apos;s second-hand item exchange platform</h4>
           <span>08/2024 - Present</span>
           <ul>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Currently in the process</li>
@@ -36,6 +36,7 @@ export default function Resume() {
           <ul>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>React</li>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Node.js</li>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Express.js</li>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Typescript</li>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Docker</li>
             <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>PostgreSQL</li>
