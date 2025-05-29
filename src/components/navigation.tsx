@@ -23,13 +23,13 @@ export default function Navigation() {
                 <RoleGate allowedRole={UserRole.ADMIN}>
                     <li><NewPostButton>New Post</NewPostButton></li>
                 </RoleGate>
-                { !user && 
+                {/*{ !user && 
                     <li><LoginButton>Login</LoginButton></li>
                 }
                 {
                     user && 
                     <li><LogoutButton>Logout</LogoutButton></li>
-                }
+                } */}
                 
             </ul>
         </nav>
