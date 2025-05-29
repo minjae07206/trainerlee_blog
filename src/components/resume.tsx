@@ -25,6 +25,22 @@ export default function Resume() {
         <h2>Project</h2>
         <div className={style.bar}></div>
         <article>
+          <div className={`activity-section ${style.activitySection}`}>
+          <h3>NYUSH Exchange Platform</h3>
+          <h4>School's second hand item exchange platform</h4>
+          <span>08/2024 - Present</span>
+          <ul>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Currently in the process</li>
+          </ul>
+          <h4>Technologies used in this project</h4>
+          <ul>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>React</li>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Node.js</li>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Typescript</li>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>Docker</li>
+            <li><svg className={style.bullet} viewBox="0 0 20 20"><circle cx="10" cy="13" r="5" fill="black" /></svg>PostgreSQL</li>
+          </ul>
+          </div>
         <div className={`activity-section ${style.activitySection}`}>
           <h3>Trainer Lee&apos;s blog (Current page)</h3>
           <h4>Personal web page</h4>
